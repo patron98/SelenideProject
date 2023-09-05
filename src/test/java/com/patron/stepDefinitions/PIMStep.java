@@ -15,11 +15,6 @@ public class PIMStep {
         service.userLogin();
     }
 
-    @Given("I go to PIM page")
-    public void iSearchFor() {
-        service.goToPimPage();
-    }
-
     @When("I add a new PIM user: {string} {string}")
     public void iAddANewPIMUser(String firstname, String lastname) {
         service.addPIMUser(firstname, lastname);

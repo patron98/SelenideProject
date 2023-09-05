@@ -17,7 +17,7 @@ public class DirectoryPage {
     private final SelenideElement searchButton = $(byCssSelector("button[type='submit']"));
     private final SelenideElement employeeSheet = $(byClassName("oxd-sheet"));
     private final Function<String, SelenideElement> autocomplete = name ->
-            Selenide.$(byXpath("//div[@role='listbox']//div[@role='option']//span[contains(text(),'" + name + "')]"));
+            Selenide.$(byText(name));
 
     private final By employeeName = byClassName("oxd-text");
 
