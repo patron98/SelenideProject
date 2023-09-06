@@ -1,6 +1,7 @@
 package com.patron.pages.pim;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
@@ -8,6 +9,7 @@ import static com.codeborne.selenide.Selenide.$;
 import com.codeborne.selenide.SelenideElement;
 import com.patron.pages.modals.DeleteModal;
 import java.util.function.Function;
+import org.openqa.selenium.By;
 
 public class PIMPage {
 
@@ -16,7 +18,7 @@ public class PIMPage {
       byXpath("//label[text()='Employee Name']/following::input"));
   private final SelenideElement searchButton = $("button[type='submit']");
   private final SelenideElement searchResult = $("div.oxd-table-row", 1);
-  private final SelenideElement deleteButton = $("i.oxd-icon.bi-trash");
+  private final By deleteButton = byCssSelector("i.oxd-icon.bi-trash");
   private final SelenideElement deleteConfirmation = $("p.oxd-text--toast-message");
   private final Function<String, SelenideElement> autocomplete = name ->
       $(byText(name));
@@ -36,7 +38,7 @@ public class PIMPage {
   public DeleteModal deletePIMUser(String firstname, String lastname) {
     searchResult.shouldHave(text(firstname));
     searchResult.shouldHave(text(lastname));
-    deleteButton.click();
+    searchResult.find(deleteButton).click();
     return new DeleteModal();
   }
 
