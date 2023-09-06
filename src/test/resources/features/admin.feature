@@ -5,9 +5,12 @@ Feature: Admin Feature
 
   Scenario Outline: create a new user as admin
     Given User is logged in
-    When Admin creates a new user: "<firstname>" "<lastname>"
-    Then A new user is created in 'user management' with name: "<firstname>" "<lastname>"
+    And A PIM user exists with "Marko" "Polo"
+    When Admin creates a new user: "<username>"
+    Then A new user is created
+
+    And Cleanup user: "Marko" "Polo"
 
     Examples:
-      | firstname | lastname |
-      | Mario     | Kart     |
+      | username    |
+      | Super Mario |
