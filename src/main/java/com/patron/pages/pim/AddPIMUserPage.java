@@ -1,4 +1,4 @@
-package com.patron.pages;
+package com.patron.pages.pim;
 
 import com.codeborne.selenide.SelenideElement;
 

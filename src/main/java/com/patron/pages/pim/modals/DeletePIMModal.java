@@ -1,7 +1,7 @@
-package com.patron.modals;
+package com.patron.pages.pim.modals;
 
 import com.codeborne.selenide.SelenideElement;
-import com.patron.pages.PIMPage;
+import com.patron.pages.pim.PIMPage;
 
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;

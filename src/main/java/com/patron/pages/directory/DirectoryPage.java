@@ -1,4 +1,4 @@
-package com.patron.pages;
+package com.patron.pages.directory;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;

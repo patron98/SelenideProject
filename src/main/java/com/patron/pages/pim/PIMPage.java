@@ -1,9 +1,8 @@
-package com.patron.pages;
+package com.patron.pages.pim;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import com.patron.modals.DeletePIMModal;
+import com.patron.pages.pim.modals.DeletePIMModal;
 
 import java.util.function.Function;
 

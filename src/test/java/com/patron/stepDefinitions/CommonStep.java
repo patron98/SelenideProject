@@ -1,13 +1,14 @@
 package com.patron.stepDefinitions;
 
-import com.patron.service.Service;
+import com.patron.service.CommonService;
+import com.patron.service.PIMService;
 import io.cucumber.java.en.Given;
 
 public class CommonStep {
 
-    private final Service service = new Service();
+    private final CommonService  commonService = new CommonService();
     @Given("I open the website")
     public void iOpenTheWebsite() {
-        service.openPage();
+        commonService.openPage();
     }
 }
