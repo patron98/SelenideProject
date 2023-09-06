@@ -3,22 +3,14 @@ Feature: Pim Users
   Background:
     Given I open the website
 
-  Scenario Outline: creating a pim user
+  Scenario: creating a pim user
     Given User is logged in
-    When I add a new PIM user: "<firstname>" "<lastname>"
-    Then A new user is created in 'Directory' with name: "<firstname>" "<lastname>"
+    When I add a new PIM user: "Alberto" "Quack"
+    Then A new user is created in 'Directory' with name: "Alberto" "Quack"
 
-    And Cleanup user: "<firstname>" "<lastname>"
+    And Cleanup PIM user: "Alberto" "Quack"
 
-    Examples:
-      | firstname | lastname |
-      | Alberto   | Quack    |
-
-  Scenario Outline: deleting a pim user
-    Given A PIM user exists with "<firstname>" "<lastname>"
-    When The user gets deleted "<firstname>" "<lastname>"
+  Scenario: deleting a pim user
+    Given A PIM user exists with "Marko" "Polo"
+    When The user gets deleted "Marko" "Polo"
     Then The user no longer exists
-
-    Examples:
-      | firstname | lastname |
-      | Marko     | Polo     |

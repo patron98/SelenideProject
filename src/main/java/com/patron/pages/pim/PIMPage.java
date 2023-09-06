@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
 import com.codeborne.selenide.SelenideElement;
-import com.patron.pages.pim.modals.DeletePIMModal;
+import com.patron.pages.modals.DeleteModal;
 import java.util.function.Function;
 
 public class PIMPage {
@@ -33,15 +33,14 @@ public class PIMPage {
     return this;
   }
 
-  public DeletePIMModal deletePIMUser(String firstname, String lastname) {
+  public DeleteModal deletePIMUser(String firstname, String lastname) {
     searchResult.shouldHave(text(firstname));
     searchResult.shouldHave(text(lastname));
     deleteButton.click();
-    return new DeletePIMModal();
+    return new DeleteModal();
   }
 
-  public PIMPage confirmDeletePIMUser() {
+  public void confirmDeletePIMUser() {
     deleteConfirmation.shouldHave(text("Successfully Deleted"));
-    return this;
   }
 }

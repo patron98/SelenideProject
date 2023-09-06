@@ -42,7 +42,7 @@ public class PIMStep {
     pimService.checkDeletedPIMUser();
   }
 
-  @And("Cleanup user: {string} {string}")
+  @And("Cleanup PIM user: {string} {string}")
   public void cleanupUser(String firstname, String lastname) {
     pimService.deletePIMUser(firstname, lastname);
     pimService.checkDeletedPIMUser();
