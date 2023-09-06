@@ -1,6 +1,7 @@
 package com.patron.service;
 
 import com.patron.pages.LoginPage;
+import com.patron.pages.PIMPage;
 import com.patron.pages.SearchBar;
 
 import static com.codeborne.selenide.Selenide.open;
@@ -28,5 +29,17 @@ public class Service {
                 .openDirectoryPage()
                 .searchPIMUser(firstname, lastname)
                 .checkNewPIMUser(firstname, lastname);
+    }
+
+    public void deletePIMUser(String firstname, String lastname) {
+        new SearchBar()
+                .openPimPage()
+                .searchPIMUser(firstname, lastname)
+                .deletePIMUser(firstname, lastname)
+                .confirmDeleteUser();
+    }
+
+    public void checkDeletedPIMUser() {
+        new PIMPage().confirmDeletePIMUser();
     }
 }
