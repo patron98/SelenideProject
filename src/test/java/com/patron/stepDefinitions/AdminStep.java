@@ -22,5 +22,6 @@ public class AdminStep {
   @And("Cleanup Admin user: {string}")
   public void cleanupAdminUser(String username) {
     adminService.deleteAdminUser(username);
+    adminService.confirmDeletedUser();
   }
 }
