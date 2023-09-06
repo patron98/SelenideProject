@@ -10,4 +10,4 @@ Feature: Admin Feature
     Then A new user is created
 
     And Cleanup PIM user: "Marko" "Polo"
-    And Cleanup Admin user: "Super Mario"
+    # And Cleanup Admin user: "Super Mario"
