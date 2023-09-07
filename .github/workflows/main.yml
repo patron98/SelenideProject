@@ -3,7 +3,7 @@ name: Java CI with Selenide
 on:
   push:
     branches:
-      - main  # Change this to your main branch name
+      - main
 
 jobs:
   build:
@@ -11,8 +11,8 @@ jobs:
 
     services:
       selenium:
-        image: selenium/standalone-${{ github.event.inputs.chrome }}
-        options: --shm-size=2gb
+        image: selenium/standalone-chrome:${{ github.event.inputs.chrome }}
+        options: --shm-size=4gb
 
     steps:
       - name: Checkout code
@@ -21,10 +21,10 @@ jobs:
       - name: Set up Java
         uses: actions/setup-java@v2
         with:
-          java-version: '11'  # You can change this to your desired Java version
+          java-version: '11'
 
       - name: Set ChromeOptions for Selenide
-        run: mvn -X clean test -Dchromeoptions.args="--no-sandbox,--disable-extensions,--disable-dev-shm-usage,--user-agent=Chrome/116.0.5845.9,\"intl.accept_languages=en-US,en,es\""
+        run: mvn -X clean test -Dchromeoptions.args="--headless,--no-sandbox,--disable-extensions,--disable-dev-shm-usage,--user-agent=Chrome/116.0.5845.9,\"intl.accept_languages=en-US,en,es\""
 
       - name: Build with Maven
         run: mvn clean install
