@@ -24,6 +24,9 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
+      - run: google-chrome --version
+      - run: chromedriver --version
+
       - name: run Selenide Tests
         run: mvn clean test -Dchromeoptions.args="--no-sandbox,--disable-extensions,--disable-dev-shm-usage,--user-agent=Chrome/116.0.5845.9,\"intl.accept_languages=en-US,en,es\""
 
