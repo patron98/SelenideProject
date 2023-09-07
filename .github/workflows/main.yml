@@ -9,27 +9,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    services:
+      selenium:
+        image: selenium/standalone-${{ github.event.inputs.chrome }}
+        options: --shm-size=2gb
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: java version
-        run: java --version
-
-      - name: Install ChromeDriver
-        run: |
-          wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/116.0.5845.96/linux64/chrome-linux64.zip
-          unzip chrome-linux64.zip
-          chmod +x chrome-linux64
-          sudo mv chrome-linux64 /usr/local/bin/
-
-      - name: Set ChromeOptions for Selenide
-        run: mvn -X clean test -Dchromeoptions.args="--no-sandbox,--disable-extensions,--disable-dev-shm-usage,--user-agent=Chrome/116.0.5845.9,\"intl.accept_languages=en-US,en,es\""
 
       - name: Set up Java
         uses: actions/setup-java@v2
         with:
           java-version: '11'  # You can change this to your desired Java version
+
+      - name: Set ChromeOptions for Selenide
+        run: mvn -X clean test -Dchromeoptions.args="--no-sandbox,--disable-extensions,--disable-dev-shm-usage,--user-agent=Chrome/116.0.5845.9,\"intl.accept_languages=en-US,en,es\""
 
       - name: Build with Maven
         run: mvn clean install
