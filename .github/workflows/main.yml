@@ -11,7 +11,7 @@ jobs:
 
     services:
       selenium:
-        image: selenium/standalone-chrome:${{ github.event.inputs.chrome }}latest
+        image: selenium/standalone-chrome:${{ github.event.inputs.chrome }}:latest
         options: --shm-size=4gb
 
     steps:
@@ -25,5 +25,5 @@ jobs:
           distribution: 'adopt'
 
       - name: run Selenide Tests
-        run: mvn clean test -Dchromeoptions.args="--no-sandbox,--disable-extensions,--disable-dev-shm-usage,--user-agent=Chrome/116.0.5845.96,\"intl.accept_languages=en-US,en,es\""
+        run: mvn clean test -Dchromeoptions.args="--no-sandbox,--disable-extensions,--disable-dev-shm-usage,--user-agent=Chrome/116.0.5845.9,\"intl.accept_languages=en-US,en,es\""
 
