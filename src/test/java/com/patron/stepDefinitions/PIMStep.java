@@ -1,6 +1,5 @@
 package com.patron.stepDefinitions;
 
-import com.patron.service.CommonService;
 import com.patron.service.PIMService;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -10,12 +9,6 @@ import io.cucumber.java.en.When;
 public class PIMStep {
 
   private final PIMService pimService = new PIMService();
-  private final CommonService commonService = new CommonService();
-
-  @Given("User is logged in")
-  public void userIsLoggedIn() {
-    commonService.userLogin();
-  }
 
   @When("I add a new PIM user: {string} {string}")
   public void iAddANewPIMUser(String firstname, String lastname) {
