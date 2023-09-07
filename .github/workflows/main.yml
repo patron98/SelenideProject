@@ -20,8 +20,8 @@ jobs:
         run: |
           wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/116.0.5845.96/linux64/chrome-linux64.zip
           unzip chrome-linux64.zip
-          chmod +x chromedriver
-          sudo mv chromedriver /usr/local/bin/
+          chmod +x chrome-linux64
+          sudo mv chrome-linux64 /usr/local/bin/
 
       - name: Set ChromeOptions for Selenide
         run: mvn -X clean test -Dchromeoptions.args="--no-sandbox,--disable-extensions,--disable-dev-shm-usage,--user-agent=Chrome/100.0.4896.20" -Dchromeoptions.prefs="homepage=https://example.com,\"intl.accept_languages=en-US,en,es\""
