@@ -1,4 +1,4 @@
-name: Java CI with Selenide
+name: Run Test Suites
 
 on:
   push:
@@ -24,11 +24,6 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
-      - name: Set ChromeOptions for Selenide
-        run: mvn -X clean test -Dchromeoptions.args="--headless,--no-sandbox,--disable-extensions,--disable-dev-shm-usage,--user-agent=Chrome/116.0.5845.9,\"intl.accept_languages=en-US,en,es\""
+      - name: run Selenide Tests
+        run: mvn clean test -Dchromeoptions.args="--headless,--no-sandbox,--disable-extensions,--disable-dev-shm-usage,--user-agent=Chrome/116.0.5845.9,\"intl.accept_languages=en-US,en,es\""
 
-      - name: Build with Maven
-        run: mvn clean install
-
-      - name: Run Selenide Tests
-        run: mvn test
