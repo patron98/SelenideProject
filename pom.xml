@@ -55,8 +55,13 @@
           <version>3.0.2</version>
         </plugin>
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.0</version>
+          <version>3.8.0</version> <!-- Use your plugin version -->
+          <configuration>
+            <source>11</source> <!-- Set your desired source Java version -->
+            <target>11</target> <!-- Set your desired target Java version -->
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
