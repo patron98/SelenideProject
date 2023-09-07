@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Java CI with Selenide
 
 on:
   push:
@@ -13,23 +13,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install or Update ChromeDriver
+      - name: Install ChromeDriver
         run: |
           wget https://chromedriver.storage.googleapis.com/100.0.4896.20/chromedriver_linux64.zip
           unzip chromedriver_linux64.zip
           chmod +x chromedriver
           sudo mv chromedriver /usr/local/bin/
 
+      - name: Set ChromeOptions for Selenide
+        run: mvn clean test -Dchromeoptions.args="--no-sandbox,--disable-extensions,--disable-dev-shm-usage,--user-agent=Chrome/100.0.4896.20" -Dchromeoptions.prefs="homepage=https://example.com,\"intl.accept_languages=en-US,en,es\""
+
       - name: Set up Java
         uses: actions/setup-java@v2
         with:
-          java-version: '20'  # You can change this to your desired Java version
-          distribution: 'adopt'
+          java-version: '11'  # You can change this to your desired Java version
 
       - name: Build with Maven
         run: mvn clean install
 
-
-      - name: Run Tests
-        run: mvn -B package --file pom.xml test
-
+      - name: Run Selenide Tests
+        run: mvn test
