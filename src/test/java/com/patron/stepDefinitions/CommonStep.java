@@ -11,4 +11,9 @@ public class CommonStep {
   public void iOpenTheWebsite() {
     commonService.openPage();
   }
+
+  @Given("User is logged in")
+  public void userIsLoggedIn() {
+    commonService.userLogin();
+  }
 }

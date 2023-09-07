@@ -8,6 +8,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.patron.pages.admin.AdminPage;
 import com.patron.pages.directory.DirectoryPage;
 import com.patron.pages.pim.PIMPage;
+import com.patron.pages.recruitment.candidate.CandidatePage;
 import java.util.function.Function;
 
 public class SearchBar {
@@ -35,5 +36,11 @@ public class SearchBar {
     search("Admin");
     searchResult.apply("Admin").click();
     return new AdminPage();
+  }
+
+  public CandidatePage openRecruitmentPage() {
+    search("Recruitment");
+    searchResult.apply("Recruitment").click();
+    return new CandidatePage();
   }
 }
