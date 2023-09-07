@@ -1,3 +1,4 @@
+@RecruitmentFeature
 Feature: recruitment
 
   Background:

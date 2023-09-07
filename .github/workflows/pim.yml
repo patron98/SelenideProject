@@ -1,0 +1,28 @@
+name: Run Test Suites
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      selenium:
+        image: selenium/standalone-chrome:${{ github.event.inputs.chrome }}latest
+        options: --shm-size=4gb
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+
+      - name: Run Test
+        run: mvn -X clean test -Dcucumber.options="--tags @Pim" -Dchromeoptions.args="--headless,--no-sandbox,--disable-extensions,--disable-dev-shm-usage,--user-agent=Chrome/116.0.5845.9,\"intl.accept_languages=en-US,en,es\""

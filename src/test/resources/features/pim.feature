@@ -1,4 +1,4 @@
-# @Login
+@PimFeature
 Feature: Pim Users
 
   Background:
