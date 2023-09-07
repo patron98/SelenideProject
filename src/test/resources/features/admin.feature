@@ -1,3 +1,4 @@
+@AdminFeature
 Feature: Admin Feature
 
   Background:
