@@ -21,7 +21,7 @@ jobs:
           sudo mv chromedriver /usr/local/bin/
 
       - name: Set ChromeOptions for Selenide
-        run: mvn clean test -Dchromeoptions.args="--no-sandbox,--disable-extensions,--disable-dev-shm-usage,--user-agent=Chrome/100.0.4896.20" -Dchromeoptions.prefs="homepage=https://example.com,\"intl.accept_languages=en-US,en,es\""
+        run: mvn -X clean test -Dchromeoptions.args="--no-sandbox,--disable-extensions,--disable-dev-shm-usage,--user-agent=Chrome/100.0.4896.20" -Dchromeoptions.prefs="homepage=https://example.com,\"intl.accept_languages=en-US,en,es\""
 
       - name: Set up Java
         uses: actions/setup-java@v2
