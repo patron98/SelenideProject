@@ -11,7 +11,7 @@ jobs:
 
     services:
       selenium:
-        image: selenium/standalone-chrome:${{ github.event.inputs.chrome }}
+        image: selenium/standalone-chrome:${{ github.event.inputs.chrome }}latest
         options: --shm-size=4gb
 
     steps:
