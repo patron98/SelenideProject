@@ -24,12 +24,6 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
-      - name: check chrome version
-        run: google-chrome --version
-
-      - name: check driver version
-        run: chromedriver --version
-
       - name: Set ChromeOptions for Selenide
         run: mvn -X clean test -Dchromeoptions.args="--headless,--no-sandbox,--disable-extensions,--disable-dev-shm-usage,--user-agent=Chrome/116.0.5845.9,\"intl.accept_languages=en-US,en,es\""
 
