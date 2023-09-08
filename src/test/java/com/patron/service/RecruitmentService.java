@@ -24,13 +24,12 @@ public class RecruitmentService {
         .searchCandidate(firstname, lastname)
         .deleteCandidate(firstname, lastname)
         .confirmDeleteUser();
-  }
 
-  public void confirmCandidateDeleted() {
     new CandidatePage().confirmDeleteCandidate();
   }
 
-  public void acceptCandidate(String date) {
+
+  public void hireCandidate(String date) {
     new CandidateDetailPage()
         .goToAcceptCandidate()
         .accept()

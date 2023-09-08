@@ -1,5 +1,5 @@
 @Pim
-Feature: Pim Users
+Feature: Pim Feature
 
   Background:
     Given I open the website
