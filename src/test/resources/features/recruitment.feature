@@ -1,8 +1,11 @@
+@Recruitment
 Feature: recruitment
 
   Background:
     Given I open the website
-    # Given User is logged in
+
+  Scenario: login
+    Given User is logged in
 
   Scenario Outline: Creating new candidate
     When I create a candidate: "<firstname>" "<lastname>" "<email>" "<type>"
