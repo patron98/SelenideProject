@@ -1,5 +1,5 @@
 @Recruitment
-Feature: recruitment
+Feature: Recruitment Feature
 
   Background:
     Given I open the website

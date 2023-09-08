@@ -32,7 +32,7 @@ public class RecruitmentStep {
 
   @When("I hire the candidate and plan interview with {string}")
   public void iAcceptTheCandidate(String date) {
-    recruitmentService.acceptCandidate(date);
+    recruitmentService.hireCandidate(date);
   }
 
   @Then("The candidate is hired")
