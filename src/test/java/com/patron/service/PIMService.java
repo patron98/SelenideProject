@@ -24,7 +24,7 @@ public class PIMService {
         .openPimPage()
         .searchPIMUser(firstname, lastname)
         .deletePIMUser(firstname, lastname)
-        .confirmDeleteUser();
+        .confirmDelete();
   }
 
   public void checkDeletedPIMUser() {

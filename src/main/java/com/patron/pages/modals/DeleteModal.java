@@ -9,7 +9,7 @@ public class DeleteModal {
 
   private final SelenideElement confirmDelete = $(byXpath("//button[contains(.,'Yes, Delete')]"));
 
-  public void confirmDeleteUser() {
+  public void confirmDelete() {
     confirmDelete.click();
   }
 }
