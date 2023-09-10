@@ -23,7 +23,7 @@ public class RecruitmentService {
         .openRecruitmentPage()
         .searchCandidate(firstname, lastname)
         .deleteCandidate(firstname, lastname)
-        .confirmDeleteUser();
+        .confirmDelete();
 
     new CandidatePage().confirmDeleteCandidate();
   }

@@ -21,7 +21,7 @@ public class AdminService {
     new SearchBar()
         .openAdminPage()
         .deleteUser(username)
-        .confirmDeleteUser();
+        .confirmDelete();
   }
 
   public void confirmDeletedUser() {
