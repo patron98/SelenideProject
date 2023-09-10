@@ -27,4 +27,4 @@ jobs:
           restore-keys: ${{ runner.os }}-maven-
 
       - name: Run Recruitment Feature
-        run: mvn clean test -Dcucumber.filter.tags="@Recruitment" -Dchromeoptions.args="--headless,--no-sandbox,--disable-extensions,--disable-dev-shm-usage,--user-agent=Chrome/116.0.5845.9,\"intl.accept_languages=en-US,en,es\""
+        run: mvn clean test -Dcucumber.filter.tags="@Recruitment" -Dchromeoptions.args="--no-sandbox,--disable-extensions,--disable-dev-shm-usage,--user-agent=Chrome/116.0.5845.9,\"intl.accept_languages=en-US,en,es\""
