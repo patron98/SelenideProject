@@ -1,4 +1,4 @@
-name: Run Test Suites with Caching
+name: Run Test Suites
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  full_test:
     runs-on: ubuntu-latest
 
     services:

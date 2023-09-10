@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  admin_test:
+  recruitment_test:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +20,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Run Recruitment Feature
-        run: mvn clean test -Dcucumber.options="--tags @Recruitment" -Dchromeoptions.args="--headless,--no-sandbox,--disable-extensions,--disable-dev-shm-usage,--user-agent=Chrome/116.0.5845.9,\"intl.accept_languages=en-US,en,es\""
+        run: mvn clean test -Dcucumber.filter.tags="@Recruitment" -Dchromeoptions.args="--headless,--no-sandbox,--disable-extensions,--disable-dev-shm-usage,--user-agent=Chrome/116.0.5845.9,\"intl.accept_languages=en-US,en,es\""
 
       - name: Cache Maven dependencies
         uses: actions/cache@v2
