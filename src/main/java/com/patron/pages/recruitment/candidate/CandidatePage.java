@@ -1,5 +1,12 @@
 package com.patron.pages.recruitment.candidate;
 
+import com.codeborne.selenide.SelenideElement;
+import com.patron.pages.modals.DeleteModal;
+import com.patron.pages.recruitment.vacancy.VacancyPage;
+import org.openqa.selenium.By;
+
+import java.util.function.Function;
+
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -9,12 +16,6 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static java.time.Duration.ofSeconds;
-
-import com.codeborne.selenide.SelenideElement;
-import com.patron.pages.modals.DeleteModal;
-import com.patron.pages.recruitment.vacancy.VacancyPage;
-import java.util.function.Function;
-import org.openqa.selenium.By;
 
 public class CandidatePage {
 
