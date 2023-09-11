@@ -1,5 +1,6 @@
 package com.patron.pages.recruitment.candidate;
 
+import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byCssSelector;
@@ -7,6 +8,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
+import static java.time.Duration.ofSeconds;
 
 import com.codeborne.selenide.SelenideElement;
 import com.patron.pages.modals.DeleteModal;
@@ -25,12 +27,12 @@ public class CandidatePage {
   private final By deleteButton = byCssSelector("i.oxd-icon.bi-trash");
 
   public AddCandidatePage goToAddCandidatePage() {
-    addCandidateButton.click();
+    addCandidateButton.shouldBe(visible, ofSeconds(5)).click();
     return new AddCandidatePage();
   }
 
   public CandidatePage searchCandidate(String firstname, String lastname) {
-    searchCandidate.sendKeys(firstname);
+    searchCandidate.shouldBe(visible, ofSeconds(5)).sendKeys(firstname);
     autocomplete.apply(firstname + " " + lastname).shouldBe(visible).click();
     executeJavaScript("arguments[0].click();", searchButton);
     return this;
@@ -44,6 +46,6 @@ public class CandidatePage {
   }
 
   public void confirmDeleteCandidate() {
-    deleteConfirmation.shouldHave(text("Successfully Deleted"));
+    deleteConfirmation.should(appear, ofSeconds(5)).shouldHave(text("Successfully Deleted"));
   }
 }
