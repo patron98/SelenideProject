@@ -10,7 +10,7 @@ public class RecruitmentService {
   public void createCandidate(String firstname, String lastname, String email, String type) {
     new SearchBar()
         .openRecruitmentPage()
-        .goToAddCandidatePage()
+        .goToAddCandidate()
         .createCandidate(firstname, lastname, email, type);
   }
 
@@ -45,5 +45,22 @@ public class RecruitmentService {
 
   public void checkCandidateStatus() {
     new CandidateDetailPage().checkStatus();
+  }
+
+  public void createVacancy(String type, String manager) {
+    new SearchBar()
+        .openRecruitmentPage()
+        .goToVacancyPage()
+        .goToAddVacancy()
+        .createVacancy(type, manager);
+  }
+
+  public void deleteVacancy(String type) {
+    new SearchBar()
+        .openRecruitmentPage()
+        .goToVacancyPage()
+        .searchVacancy(type)
+        .deleteVacancy(type)
+        .confirmDeleteVacancy();
   }
 }

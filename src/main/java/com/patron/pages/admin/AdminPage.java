@@ -17,11 +17,11 @@ public class AdminPage {
   private final SelenideElement searchButton = $("button[type='submit']");
   private final SelenideElement searchResult = $("div.oxd-table-row", 1);
   private final By deleteButton = byCssSelector("i.oxd-icon.bi-trash");
-  private final SelenideElement deleteConfirmation = $("p.oxd-text--toast-message");
+  private final SelenideElement confirmation = $("p.oxd-text--toast-message");
 
-  public CreateAdminUserPage goToCreateNewUser() {
+  public AddAdminUserPage goToAddUser() {
     addButton.click();
-    return new CreateAdminUserPage();
+    return new AddAdminUserPage();
   }
 
   public DeleteModal deleteUser(String username) {
@@ -33,6 +33,11 @@ public class AdminPage {
   }
 
   public void checkDeletedUser() {
-    deleteConfirmation.shouldHave(text("Successfully Deleted"));
+    confirmation.shouldHave(text("Successfully Deleted"));
+  }
+
+
+  public void checkCreatedUser() {
+    confirmation.shouldHave(text("Successfully Saved"));
   }
 }

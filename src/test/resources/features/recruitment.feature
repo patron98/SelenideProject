@@ -20,13 +20,14 @@ Feature: Recruitment Feature
 
   Scenario Outline: Hire candidate
     Given A PIM user exists with "Marko" "Polo"
-    # And A vacancy exists from "<type>"
+    And A vacancy exists from "<type>" with manager "Marko Polo"
     And A candidate exists with: "<firstname>" "<lastname>" "<email>" "<type>"
     When I hire the candidate and plan interview with "<date>"
     Then The candidate is hired
 
     And Cleanup PIM user: "Marko" "Polo"
     And Cleanup candidate: "<firstname>" "<lastname>"
+    And Cleanup vacancy: "<type>"
     Examples:
       | firstname | lastname | email                     | type                     | date       |
       | Steve     | Johnson  | steve.johnson@example.com | Associate IT Manager     | 2023-11-20 |

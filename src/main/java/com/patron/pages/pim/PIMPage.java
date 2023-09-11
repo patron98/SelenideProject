@@ -26,26 +26,26 @@ public class PIMPage {
   private final Function<String, SelenideElement> autocomplete = name ->
       $(byText(name));
 
-  public AddPIMUserPage goToAddPage() {
+  public AddPIMUserPage goToAddPimUser() {
     addEmployeeLink.shouldBe(visible, ofSeconds(5)).click();
     return new AddPIMUserPage();
   }
 
-  public PIMPage searchPIMUser(String firstname, String lastname) {
+  public PIMPage searchPimUser(String firstname, String lastname) {
     employeeNameInput.shouldBe(visible, ofSeconds(5)).sendKeys(firstname);
     autocomplete.apply(firstname + " " + lastname).click();
     searchButton.click();
     return this;
   }
 
-  public DeleteModal deletePIMUser(String firstname, String lastname) {
+  public DeleteModal deletePimUser(String firstname, String lastname) {
     searchResult.shouldHave(text(firstname));
     searchResult.shouldHave(text(lastname));
     searchResult.find(deleteButton).click();
     return new DeleteModal();
   }
 
-  public void confirmDeletePIMUser() {
+  public void confirmDeletePimUser() {
     deleteConfirmation.should(appear, ofSeconds(5)).shouldHave(text("Successfully Deleted"));
   }
 }

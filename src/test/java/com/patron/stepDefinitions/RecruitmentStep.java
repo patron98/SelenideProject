@@ -39,4 +39,14 @@ public class RecruitmentStep {
   public void theCandidateIsHired() {
     recruitmentService.checkCandidateStatus();
   }
+
+  @And("A vacancy exists from {string} with manager {string}")
+  public void aVacancyExistsFrom(String type, String manager) {
+    recruitmentService.createVacancy(type, manager);
+  }
+
+  @And("Cleanup vacancy: {string}")
+  public void cleanupVacancy(String type) {
+    recruitmentService.deleteVacancy(type);
+  }
 }
