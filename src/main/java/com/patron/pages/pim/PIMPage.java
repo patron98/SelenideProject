@@ -1,10 +1,13 @@
 package com.patron.pages.pim;
 
+import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
+import static java.time.Duration.ofSeconds;
 
 import com.codeborne.selenide.SelenideElement;
 import com.patron.pages.modals.DeleteModal;
@@ -24,12 +27,12 @@ public class PIMPage {
       $(byText(name));
 
   public AddPIMUserPage goToAddPage() {
-    addEmployeeLink.click();
+    addEmployeeLink.shouldBe(visible, ofSeconds(5)).click();
     return new AddPIMUserPage();
   }
 
   public PIMPage searchPIMUser(String firstname, String lastname) {
-    employeeNameInput.sendKeys(firstname);
+    employeeNameInput.shouldBe(visible, ofSeconds(5)).sendKeys(firstname);
     autocomplete.apply(firstname + " " + lastname).click();
     searchButton.click();
     return this;
@@ -43,6 +46,6 @@ public class PIMPage {
   }
 
   public void confirmDeletePIMUser() {
-    deleteConfirmation.shouldHave(text("Successfully Deleted"));
+    deleteConfirmation.should(appear, ofSeconds(5)).shouldHave(text("Successfully Deleted"));
   }
 }
