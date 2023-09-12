@@ -8,10 +8,14 @@ Feature: Recruitment Feature
 	Given User is logged in
 
   Scenario Outline: Creating new candidate
+	Given A PIM user exists with "Marko" "Polo"
+	And A vacancy exists from "<type>" with manager "Marko Polo"
 	When I create a candidate: "<firstname>" "<lastname>" "<email>" "<type>"
 	Then The User is created
 
+	And Cleanup PIM user: "Marko" "Polo"
 	And Cleanup candidate: "<firstname>" "<lastname>"
+	And Cleanup vacancy: "<type>"
 	Examples:
 	  | firstname | lastname | email                     | type                     |
 	  | Steve     | Johnson  | steve.johnson@example.com | Associate IT Manager     |
