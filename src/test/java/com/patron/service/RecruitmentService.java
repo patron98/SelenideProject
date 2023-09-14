@@ -4,13 +4,15 @@ import com.patron.pages.SearchBar;
 import com.patron.pages.recruitment.candidate.AddCandidatePage;
 import com.patron.pages.recruitment.candidate.CandidateDetailPage;
 import com.patron.pages.recruitment.candidate.CandidatePage;
+import com.patron.pages.recruitment.vacancy.VacancyPage;
 
 public class RecruitmentService {
 
   public void createCandidate(String firstname, String lastname, String email, String type) {
     new SearchBar()
         .openRecruitmentPage()
-        .goToAddCandidatePage()
+        .goToCandidates()
+        .goToAddCandidate()
         .createCandidate(firstname, lastname, email, type);
   }
 
@@ -45,5 +47,24 @@ public class RecruitmentService {
 
   public void checkCandidateStatus() {
     new CandidateDetailPage().checkStatus();
+  }
+
+  public void createVacancy(String type, String manager) {
+    new SearchBar()
+        .openRecruitmentPage()
+        .goToVacancyPage()
+        .goToAddVacancy()
+        .createVacancy(type, manager);
+  }
+
+  public void deleteVacancy(String type) {
+    new SearchBar()
+        .openRecruitmentPage()
+        .goToVacancyPage()
+        .searchVacancy(type)
+        .deleteVacancy(type)
+        .confirmDelete();
+
+    new VacancyPage().confirmDeleteVacancy();
   }
 }

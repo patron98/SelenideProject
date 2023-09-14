@@ -8,7 +8,7 @@ public class PIMService {
   public void addPIMUser(String firstname, String lastname) {
     new SearchBar()
         .openPimPage()
-        .goToAddPage()
+        .goToAddPimUser()
         .addPIMUser(firstname, lastname);
   }
 
@@ -22,12 +22,12 @@ public class PIMService {
   public void deletePIMUser(String firstname, String lastname) {
     new SearchBar()
         .openPimPage()
-        .searchPIMUser(firstname, lastname)
-        .deletePIMUser(firstname, lastname)
+        .searchPimUser(firstname, lastname)
+        .deletePimUser(firstname, lastname)
         .confirmDelete();
   }
 
   public void checkDeletedPIMUser() {
-    new PIMPage().confirmDeletePIMUser();
+    new PIMPage().confirmDeletePimUser();
   }
 }

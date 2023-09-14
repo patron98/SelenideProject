@@ -17,27 +17,27 @@ public class CandidateDetailPage {
   private final SelenideElement hireStatus = $(byClassName("orangehrm-recruitment-status"));
 
   public ConfirmPage goToAcceptCandidate() {
-    buttonValue.apply("Shortlist").shouldBe(visible, ofSeconds(5)).click();
+    buttonValue.apply("Shortlist").shouldBe(visible, ofSeconds(10)).click();
     return new ConfirmPage();
   }
 
   public ScheduleInterviewPage goToScheduleInterview() {
-    buttonValue.apply("Schedule Interview").shouldBe(visible, ofSeconds(5)).click();
+    buttonValue.apply("Schedule Interview").shouldBe(visible, ofSeconds(10)).click();
     return new ScheduleInterviewPage();
   }
 
   public ConfirmPage markInterviewPassed() {
-    buttonValue.apply("Mark Interview Passed").shouldBe(visible, ofSeconds(5)).click();
+    buttonValue.apply("Mark Interview Passed").shouldBe(visible, ofSeconds(10)).click();
     return new ConfirmPage();
   }
 
   public ConfirmPage offerJob() {
-    buttonValue.apply("Offer Job").shouldBe(visible, ofSeconds(5)).click();
+    buttonValue.apply("Offer Job").shouldBe(visible, ofSeconds(10)).click();
     return new ConfirmPage();
   }
 
   public ConfirmPage hire() {
-    buttonValue.apply("Hire").shouldBe(visible, ofSeconds(5)).click();
+    buttonValue.apply("Hire").shouldBe(visible, ofSeconds(10)).click();
     return new ConfirmPage();
   }
 

@@ -1,6 +1,5 @@
 package com.patron.pages;
 
-import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -11,7 +10,7 @@ public class LoginPage {
 
   public final SelenideElement usernameInput = $(byName("username"));
   public final SelenideElement passwordInput = $(byName("password"));
-  public final SelenideElement submit = $(byCssSelector("button"));
+  public final SelenideElement submit = $("button");
 
   public Dashboard login() {
     usernameInput.sendKeys("Admin");

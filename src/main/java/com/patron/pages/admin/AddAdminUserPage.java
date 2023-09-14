@@ -1,6 +1,5 @@
 package com.patron.pages.admin;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
@@ -9,7 +8,7 @@ import static java.lang.String.format;
 import com.codeborne.selenide.SelenideElement;
 import java.util.function.Function;
 
-public class CreateAdminUserPage {
+public class AddAdminUserPage {
 
   private final Function<String, SelenideElement> expandOption = option
       -> $x(format("//label[text()='%s']/following::i", option));
@@ -21,7 +20,7 @@ public class CreateAdminUserPage {
   private final SelenideElement save = $("button[type='submit']");
   private final SelenideElement confirmCreated = $("p.oxd-text--toast-message");
 
-  public CreateAdminUserPage createUser(String username) {
+  public AdminPage createUser(String username) {
     expandOption.apply("User Role").click();
     selectOption.apply("Admin").click();
 
@@ -36,10 +35,8 @@ public class CreateAdminUserPage {
     inputs.apply("Confirm Password").sendKeys("password123");
 
     save.click();
-    return this;
+    return new AdminPage();
   }
 
-  public void checkCreatedUser() {
-    confirmCreated.shouldHave(text("Successfully Saved"));
-  }
+
 }
