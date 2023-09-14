@@ -11,6 +11,7 @@ import static java.lang.String.format;
 import static java.time.Duration.ofSeconds;
 
 import com.codeborne.selenide.SelenideElement;
+import com.patron.pages.modals.DeleteModal;
 import java.util.function.Function;
 import org.openqa.selenium.By;
 
@@ -29,7 +30,7 @@ public class VacancyPage {
   private final By deleteButton = byCssSelector("i.oxd-icon.bi-trash");
 
   public AddVacancyPage goToAddVacancy() {
-    addVacancyButton.shouldBe(visible, ofSeconds(2)).click();
+    addVacancyButton.shouldBe(visible, ofSeconds(10)).click();
     return new AddVacancyPage();
   }
 
@@ -40,10 +41,10 @@ public class VacancyPage {
     return this;
   }
 
-  public VacancyPage deleteVacancy(String type) {
+  public DeleteModal deleteVacancy(String type) {
     searchResult.shouldHave(text(type));
     searchResult.find(deleteButton).click();
-    return this;
+    return new DeleteModal();
   }
 
   public void confirmDeleteVacancy() {

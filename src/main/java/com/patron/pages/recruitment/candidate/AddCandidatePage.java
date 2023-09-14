@@ -1,10 +1,12 @@
 package com.patron.pages.recruitment.candidate;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 import static java.lang.String.format;
+import static java.time.Duration.ofSeconds;
 
 import com.codeborne.selenide.SelenideElement;
 import java.util.function.Function;
@@ -23,7 +25,7 @@ public class AddCandidatePage {
 
   public CandidateDetailPage createCandidate(String firstname, String lastname, String email,
       String type) {
-    firstnameInput.sendKeys(firstname);
+    firstnameInput.shouldBe(visible, ofSeconds(10)).sendKeys(firstname);
     lastnameInput.sendKeys(lastname);
     emailInput.sendKeys(email);
     vacancyTypeSelect.click();

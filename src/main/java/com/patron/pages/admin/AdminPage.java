@@ -16,8 +16,8 @@ public class AdminPage {
       "//label[text()='Username']/following::input[1]");
   private final SelenideElement searchButton = $("button[type='submit']");
   private final SelenideElement searchResult = $("div.oxd-table-row", 1);
-  private final By deleteButton = byCssSelector("i.oxd-icon.bi-trash");
   private final SelenideElement confirmation = $("p.oxd-text--toast-message");
+  private final By deleteButton = byCssSelector("i.oxd-icon.bi-trash");
 
   public AddAdminUserPage goToAddUser() {
     addButton.click();

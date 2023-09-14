@@ -20,6 +20,7 @@ public class CandidatePage {
 
   private final SelenideElement addCandidateButton = $(byText("Add"));
   private final SelenideElement vacancy = $(byText("Vacancies"));
+  private final SelenideElement candidates = $(byText("Candidates"));
   private final SelenideElement searchCandidate = $x(
       "//label[text()='Candidate Name']/following::input[1]");
   private final SelenideElement searchButton = $(byText("Search"));
@@ -29,12 +30,17 @@ public class CandidatePage {
   private final By deleteButton = byCssSelector("i.oxd-icon.bi-trash");
 
   public AddCandidatePage goToAddCandidate() {
-    addCandidateButton.shouldBe(visible, ofSeconds(5)).click();
+    addCandidateButton.shouldBe(visible, ofSeconds(10)).click();
     return new AddCandidatePage();
   }
 
+  public CandidatePage goToCandidates() {
+    candidates.shouldBe(visible, ofSeconds(10)).click();
+    return this;
+  }
+
   public VacancyPage goToVacancyPage() {
-    vacancy.shouldBe(visible, ofSeconds(2)).click();
+    vacancy.shouldBe(visible, ofSeconds(10)).click();
     return new VacancyPage();
   }
 
