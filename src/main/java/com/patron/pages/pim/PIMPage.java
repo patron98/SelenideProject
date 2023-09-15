@@ -7,14 +7,14 @@ import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
-import static java.time.Duration.ofSeconds;
 
 import com.codeborne.selenide.SelenideElement;
+import com.patron.pages.Page;
 import com.patron.pages.modals.DeleteModal;
 import java.util.function.Function;
 import org.openqa.selenium.By;
 
-public class PIMPage {
+public class PIMPage extends Page {
 
   private final SelenideElement addEmployeeLink = $(byText("Add Employee"));
   private final SelenideElement employeeNameInput = $(
@@ -27,25 +27,25 @@ public class PIMPage {
       $(byText(name));
 
   public AddPIMUserPage goToAddPimUser() {
-    addEmployeeLink.shouldBe(visible, ofSeconds(5)).click();
+    addEmployeeLink.shouldBe(visible, wait).click();
     return new AddPIMUserPage();
   }
 
   public PIMPage searchPimUser(String firstname, String lastname) {
-    employeeNameInput.shouldBe(visible, ofSeconds(5)).sendKeys(firstname);
+    employeeNameInput.shouldBe(visible, wait).sendKeys(firstname);
     autocomplete.apply(firstname + " " + lastname).click();
     searchButton.click();
     return this;
   }
 
   public DeleteModal deletePimUser(String firstname, String lastname) {
-    searchResult.shouldHave(text(firstname));
+    searchResult.shouldHave(text(firstname), wait);
     searchResult.shouldHave(text(lastname));
     searchResult.find(deleteButton).click();
     return new DeleteModal();
   }
 
   public void confirmDeletePimUser() {
-    deleteConfirmation.should(appear, ofSeconds(5)).shouldHave(text("Successfully Deleted"));
+    deleteConfirmation.should(appear, wait).shouldHave(text("Successfully Deleted"));
   }
 }

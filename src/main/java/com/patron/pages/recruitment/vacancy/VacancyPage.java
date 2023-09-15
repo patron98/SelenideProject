@@ -8,14 +8,14 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 import static java.lang.String.format;
-import static java.time.Duration.ofSeconds;
 
 import com.codeborne.selenide.SelenideElement;
+import com.patron.pages.Page;
 import com.patron.pages.modals.DeleteModal;
 import java.util.function.Function;
 import org.openqa.selenium.By;
 
-public class VacancyPage {
+public class VacancyPage extends Page {
 
   private final SelenideElement addVacancyButton = $(byText("Add"));
   private final SelenideElement searchButton = $(byText("Search"));
@@ -30,7 +30,7 @@ public class VacancyPage {
   private final By deleteButton = byCssSelector("i.oxd-icon.bi-trash");
 
   public AddVacancyPage goToAddVacancy() {
-    addVacancyButton.shouldBe(visible, ofSeconds(10)).click();
+    addVacancyButton.shouldBe(visible, wait).click();
     return new AddVacancyPage();
   }
 
@@ -42,12 +42,12 @@ public class VacancyPage {
   }
 
   public DeleteModal deleteVacancy(String type) {
-    searchResult.shouldHave(text(type));
+    searchResult.shouldHave(text(type), wait);
     searchResult.find(deleteButton).click();
     return new DeleteModal();
   }
 
   public void confirmDeleteVacancy() {
-    deleteConfirmation.should(appear, ofSeconds(5)).shouldHave(text("Successfully Deleted"));
+    deleteConfirmation.should(appear, wait).shouldHave(text("Successfully Deleted"));
   }
 }

@@ -1,26 +1,27 @@
 package com.patron.pages.recruitment.candidate;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
+import static java.lang.String.format;
 
 import com.codeborne.selenide.SelenideElement;
+import com.patron.pages.Page;
+import java.util.function.Function;
 
-public class ScheduleInterviewPage {
+public class ScheduleInterviewPage extends Page {
 
-  private final SelenideElement dateInput = $x("//label[text()='Date']/following::input[1]");
-  private final SelenideElement interviewTitle = $x(
-      "//label[text()='Interview Title']/following::input[1]");
-  private final SelenideElement interviewerName = $x(
-      "//label[text()='Interviewer']/following::input[1]");
+  private final Function<String, SelenideElement> input = input ->
+      $x(format("//label[text()='%s']/following::input[1]", input));
   private final SelenideElement autocomplete = $(byText("Marko Polo"));
   private final SelenideElement save = $(byText("Save"));
 
   public CandidateDetailPage scheduleInterview(String date) {
-    interviewTitle.sendKeys("title");
-    interviewerName.sendKeys("Marko");
+    input.apply("Interview Title").shouldBe(visible, wait).sendKeys("title");
+    input.apply("Interviewer").sendKeys("Marko");
     autocomplete.click();
-    dateInput.sendKeys(date);
+    input.apply("Date").sendKeys(date);
     save.click();
     return new CandidateDetailPage();
   }

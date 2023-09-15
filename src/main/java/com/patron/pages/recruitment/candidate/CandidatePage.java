@@ -8,15 +8,15 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
-import static java.time.Duration.ofSeconds;
 
 import com.codeborne.selenide.SelenideElement;
+import com.patron.pages.Page;
 import com.patron.pages.modals.DeleteModal;
 import com.patron.pages.recruitment.vacancy.VacancyPage;
 import java.util.function.Function;
 import org.openqa.selenium.By;
 
-public class CandidatePage {
+public class CandidatePage extends Page {
 
   private final SelenideElement addCandidateButton = $(byText("Add"));
   private final SelenideElement vacancy = $(byText("Vacancies"));
@@ -30,35 +30,35 @@ public class CandidatePage {
   private final By deleteButton = byCssSelector("i.oxd-icon.bi-trash");
 
   public AddCandidatePage goToAddCandidate() {
-    addCandidateButton.shouldBe(visible, ofSeconds(10)).click();
+    addCandidateButton.shouldBe(visible, wait).click();
     return new AddCandidatePage();
   }
 
   public CandidatePage goToCandidates() {
-    candidates.shouldBe(visible, ofSeconds(10)).click();
+    candidates.shouldBe(visible, wait).click();
     return this;
   }
 
   public VacancyPage goToVacancyPage() {
-    vacancy.shouldBe(visible, ofSeconds(10)).click();
+    vacancy.shouldBe(visible, wait).click();
     return new VacancyPage();
   }
 
   public CandidatePage searchCandidate(String firstname, String lastname) {
-    searchCandidate.shouldBe(visible, ofSeconds(5)).sendKeys(firstname);
-    autocomplete.apply(firstname + " " + lastname).should(appear, ofSeconds(5)).click();
+    searchCandidate.shouldBe(visible, wait).type(lastname);
+    autocomplete.apply(firstname + " " + lastname).should(appear, wait).click();
     executeJavaScript("arguments[0].click();", searchButton);
     return this;
   }
 
   public DeleteModal deleteCandidate(String firstname, String lastname) {
-    searchResult.shouldHave(text(firstname));
-    searchResult.shouldHave(text(lastname));
+    searchResult.shouldHave(text(firstname), wait);
+    searchResult.shouldHave(text(lastname), wait);
     searchResult.find(deleteButton).click();
     return new DeleteModal();
   }
 
   public void confirmDeleteCandidate() {
-    deleteConfirmation.should(appear, ofSeconds(5)).shouldHave(text("Successfully Deleted"));
+    deleteConfirmation.should(appear, wait).shouldHave(text("Successfully Deleted"));
   }
 }

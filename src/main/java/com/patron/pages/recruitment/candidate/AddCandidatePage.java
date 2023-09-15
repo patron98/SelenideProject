@@ -6,12 +6,12 @@ import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 import static java.lang.String.format;
-import static java.time.Duration.ofSeconds;
 
 import com.codeborne.selenide.SelenideElement;
+import com.patron.pages.Page;
 import java.util.function.Function;
 
-public class AddCandidatePage {
+public class AddCandidatePage extends Page {
 
   private final SelenideElement firstnameInput = $(byName("firstName"));
   private final SelenideElement lastnameInput = $(byName("lastName"));
@@ -25,7 +25,7 @@ public class AddCandidatePage {
 
   public CandidateDetailPage createCandidate(String firstname, String lastname, String email,
       String type) {
-    firstnameInput.shouldBe(visible, ofSeconds(10)).sendKeys(firstname);
+    firstnameInput.shouldBe(visible, wait).sendKeys(firstname);
     lastnameInput.sendKeys(lastname);
     emailInput.sendKeys(email);
     vacancyTypeSelect.click();
